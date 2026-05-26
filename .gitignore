@@ -1,0 +1,16 @@
+cat > .gitignore << 'EOF'
+.env
+__pycache__/
+*.pyc
+*.pyo
+chroma_db/
+chroma_db_docs/
+*.pkl
+*.onnx
+.DS_Store
+venv/
+rough.txt
+rough2.py
+*.log
+app/models/
+EOF
