@@ -36,8 +36,13 @@ embedding_model = AzureOpenAIEmbeddings(
 # Build or load Chroma DB
 # — separate collection from customer_qa_agent
 # -----------------------------
-CHROMA_PATH = "../../chroma_db_docs"   # different path — keeps collections separate
-PDF_PATH    = "/Users/ayush/Desktop/Sprint-project/backend/knowledge_base/retail_store_documents.pdf"
+# CHROMA_PATH = "../../chroma_db_docs"   # different path — keeps collections separate
+# PDF_PATH    = "/Users/ayush/Desktop/Sprint-project/backend/knowledge_base/retail_store_documents.pdf"
+
+
+BASE_DIR  = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+PDF_PATH  = os.path.join(BASE_DIR, "knowledge_base", "retail_store_documents.pdf")
+CHROMA_PATH = os.path.join(BASE_DIR, "chroma_db_docs")
 
 def build_or_load_vector_store():
     # If already built, just load it

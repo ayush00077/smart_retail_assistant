@@ -33,10 +33,20 @@ embedding_model = AzureOpenAIEmbeddings(
 # -----------------------------
 # Load existing Chroma DB (no rebuild)
 # -----------------------------
+# vector_store = Chroma(
+#     persist_directory="../../chroma_db",   # same path as rag_service.py
+#     embedding_function=embedding_model
+# )
+
+
+BASE_DIR    = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+CHROMA_PATH = os.path.join(BASE_DIR, "chroma_db")
+
 vector_store = Chroma(
-    persist_directory="../../chroma_db",   # same path as rag_service.py
+    persist_directory=CHROMA_PATH,
     embedding_function=embedding_model
 )
+
 
 retriever = vector_store.as_retriever(search_kwargs={"k": 3})
 
